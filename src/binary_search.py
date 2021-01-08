@@ -1,5 +1,7 @@
 class BinarySearch(object):
+    """Implementation of the Binary Search algorithm"""
     def __init__(self):
+        """Initializes the BinarySearch class"""
         pass
 
     def exists_in(self, val, lst):
@@ -11,7 +13,7 @@ class BinarySearch(object):
             lst (iterable(float|int|str)): sequence of values to be searched. Must be
               in ascending order
         """
-        return bool(self.find_index(val, lst))
+        return self.find_index(val, lst) is not None
 
     def find_index(self, val, lst):
         """finds the index of a val in iterable lst
@@ -28,7 +30,7 @@ class BinarySearch(object):
             raise TypeError('val and all elements of lst must be of the same type')
 
         lowr, uppr = 0, len(lst) - 1
-        mdpt = (uppr - lowr) / 2 + lowr
+        mdpt = int((uppr - lowr) / 2) + lowr
         while lst[mdpt] != val:
             if lst[mdpt] > val:
                 uppr = mdpt - 1
@@ -36,7 +38,7 @@ class BinarySearch(object):
                 lowr = mdpt + 1
             if lowr > uppr:
                 return None
-            mdpt = (uppr - lowr) / 2 + lowr
+            mdpt = int((uppr - lowr) / 2) + lowr
         return mdpt
 
     def _matching_types(self, val, lst):
